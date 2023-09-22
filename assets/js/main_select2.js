@@ -52,11 +52,13 @@ $(".js-example-data-ajax").select2({
         // alter the remote JSON data, except to indicate that infinite
         // scrolling can be used
         params.page = params.page || 1;
-  
+        
+        data = data.data
+
         return {
-          results: data.data.record,
+          results: data.record,
           pagination: {
-            more: (params.page * 5) < data.data.total_count
+            more: (params.page * 5) < data.total_count
           }
         };
       },
@@ -78,6 +80,7 @@ $(".js-example-data-ajax").select2({
         '<div>' +
             '<span class="flow-root font-bold">' + repo.ItemID + ' </span>' +
             '<span class="flow-root text-sm"> Part Number : ' + repo.PartNo  + ' </span>' +
+            '<span class="flow-root text-sm"> Part Name : ' + repo.ItemDesc1  + ' </span>' +
         '</div>'
     );
   

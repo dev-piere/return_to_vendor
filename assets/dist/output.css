@@ -602,10 +602,6 @@ video {
   display: block;
 }
 
-.inline {
-  display: inline;
-}
-
 .flex {
   display: flex;
 }
@@ -632,10 +628,6 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.flex-row {
-  flex-direction: row;
 }
 
 .items-center {
@@ -787,9 +779,6 @@ video {
           user-select: none;
   border-radius: 0.25rem;
   border-width: 1px;
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
@@ -883,10 +872,6 @@ video {
 }
 
 .select2-results {
-  -webkit-margin-end: 0.5rem;
-          margin-inline-end: 0.5rem;
-  -webkit-margin-start: 0.5rem;
-          margin-inline-start: 0.5rem;
   display: block;
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -911,7 +896,7 @@ video {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  padding: 0.25rem;
+  padding: 0.5rem;
 }
 
 .select2-results__option[aria-selected] {
@@ -1058,26 +1043,10 @@ video {
   padding: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-selection--single {
-    --tw-border-opacity: 1;
-    border-color: rgb(55 65 81 / var(--tw-border-opacity));
-    --tw-bg-opacity: 1;
-    background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-  }
-}
-
 .select2-container--default .select2-selection--single .select2-selection__rendered {
   /* Selection bar - Text color of the item you selected from the results */
   --tw-text-opacity: 1;
   color: rgb(146 146 146 / var(--tw-text-opacity));
-}
-
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-selection--single .select2-selection__rendered {
-    --tw-text-opacity: 1;
-    color: rgb(229 231 235 / var(--tw-text-opacity));
-  }
 }
 
 .select2-container--default .select2-selection--single .select2-selection__clear {
@@ -1092,13 +1061,6 @@ video {
   /* Selection bar - Color of the placeholder text before selection - If this property is enabled */
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-selection--single .select2-selection__placeholder {
-    --tw-text-opacity: 1;
-    color: rgb(209 213 219 / var(--tw-text-opacity));
-  }
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -1172,15 +1134,6 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-selection--multiple {
-    --tw-border-opacity: 1;
-    border-color: rgb(55 65 81 / var(--tw-border-opacity));
-    --tw-bg-opacity: 1;
-    background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-  }
-}
-
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
   margin: 0px;
   box-sizing: border-box;
@@ -1218,15 +1171,6 @@ video {
   color: rgb(146 146 146 / var(--tw-text-opacity));
 }
 
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    --tw-bg-opacity: 1;
-    background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-    --tw-text-opacity: 1;
-    color: rgb(229 231 235 / var(--tw-text-opacity));
-  }
-}
-
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
   margin-right: 0.25rem;
   display: inline-block;
@@ -1235,23 +1179,9 @@ video {
   color: rgb(146 146 146 / var(--tw-text-opacity));
 }
 
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-    --tw-text-opacity: 1;
-    color: rgb(229 231 235 / var(--tw-text-opacity));
-  }
-}
-
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
   --tw-text-opacity: 1;
   color: rgb(146 146 146 / var(--tw-text-opacity));
-}
-
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
-    --tw-text-opacity: 1;
-    color: rgb(229 231 235 / var(--tw-text-opacity));
-  }
 }
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
@@ -1280,13 +1210,6 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-@media (prefers-color-scheme: dark) {
-  .select2-container--classic .select2-selection--multiple .select2-selection__choice {
-    --tw-border-opacity: 1;
-    border-color: rgb(55 65 81 / var(--tw-border-opacity));
-  }
-}
-
 .select2-container--default .select2-search--dropdown .select2-search__field {
   /* The border of the search textbox */
   border-style: solid;
@@ -1309,7 +1232,7 @@ video {
 .select2-container--default .select2-results > .select2-results__options {
   /* Hight of the dropdown zone where the options or results are visible */
   height: 100%;
-  max-height: 8rem;
+  max-height: 16rem;
   overflow-y: auto;
 }
 
@@ -1327,13 +1250,6 @@ video {
   /* The already selected option row color */
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-}
-
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-results__option[aria-selected=true] {
-    --tw-text-opacity: 1;
-    color: rgb(146 146 146 / var(--tw-text-opacity));
-  }
 }
 
 .select2-results__option--selected {
@@ -1378,16 +1294,7 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
-  color: rgb(146 146 146 / var(--tw-text-opacity));
-}
-
-@media (prefers-color-scheme: dark) {
-  .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(107 114 128 / var(--tw-bg-opacity));
-    --tw-text-opacity: 1;
-    color: rgb(229 231 235 / var(--tw-text-opacity));
-  }
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .select2-container--default .select2-results__group {

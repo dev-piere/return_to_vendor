@@ -8,7 +8,7 @@
 }
 	.select2-container .select2-selection--single {
 		/* Selection box itself */
-		@apply box-border cursor-pointer block select-none shadow border rounded;
+		@apply box-border cursor-pointer block select-none border rounded;
 	}
 
 		.select2-container .select2-selection--single .select2-selection__rendered {
@@ -47,7 +47,7 @@
 }
 
 .select2-results {
-	@apply block text-black dark:text-gray-300 me-2 ms-2;
+	@apply block text-black dark:text-gray-300;
 }
 
 .select2-results__options {
@@ -57,7 +57,7 @@
 .select2-results__option {
 	/* The rows with results that you see after dropdown.
 	Increase p-1 to p-2 to have more space between results */
-	@apply p-1 select-none;
+	@apply p-2 select-none;
 }
 	.select2-results__option[aria-selected] {
     	@apply cursor-pointer;
@@ -130,11 +130,11 @@
 
 .select2-container--default .select2-selection--single {
 	/* Selection bar - Self */
-	@apply p-2 h-14 flex items-center bg-[#EFEFEF] dark:bg-slate-700 rounded-lg border border-solid border-slate-300 dark:border-gray-700; 
+	@apply p-2 h-14 flex items-center bg-[#EFEFEF] rounded-lg border border-solid border-slate-300; 
 }
 	.select2-container--default .select2-selection--single .select2-selection__rendered {
 	  	/* Selection bar - Text color of the item you selected from the results */
-	    @apply text-[#929292] dark:text-gray-200;
+	    @apply text-[#929292];
 	}
 	
 	.select2-container--default .select2-selection--single .select2-selection__clear {
@@ -143,7 +143,7 @@
 	}
 	.select2-container--default .select2-selection--single .select2-selection__placeholder {
     	/* Selection bar - Color of the placeholder text before selection - If this property is enabled */
-    	@apply text-gray-600 dark:text-gray-300;
+    	@apply text-gray-600;
 	}
 	.select2-container--default .select2-selection--single .select2-selection__arrow {
 		/* Selection bar - DIV where the arrow pointing down is living*/
@@ -184,7 +184,7 @@
 }
 
 .select2-container--default .select2-selection--multiple {
-	@apply p-1 min-h-full h-full border border-solid dark:border-gray-700 rounded shadow bg-white dark:bg-slate-700; 
+	@apply p-1 min-h-full h-full border border-solid rounded shadow bg-white; 
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
@@ -197,13 +197,13 @@
     @apply float-right cursor-pointer mt-1 mr-2 p-1;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    @apply bg-white dark:bg-slate-700 text-[#929292] dark:text-gray-200 border cursor-default rounded my-1 mr-1 px-2 float-left;
+    @apply bg-white text-[#929292] border cursor-default rounded my-1 mr-1 px-2 float-left;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-	@apply text-[#929292] dark:text-gray-200 cursor-pointer inline-block mr-1;
+	@apply text-[#929292] cursor-pointer inline-block mr-1;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
-    @apply text-[#929292] dark:text-gray-200;
+    @apply text-[#929292];
 }
 .select2-container--default.select2-container--focus .select2-selection--multiple {
     @apply border-2 outline-none;
@@ -213,7 +213,7 @@
 	@apply hidden;
 }
 .select2-container--classic .select2-selection--multiple .select2-selection__choice {
-	@apply bg-gray-300 border-2 dark:border-gray-700 shadow rounded float-left cursor-default mt-1 mr-1 px-1;
+	@apply bg-gray-300 border-2 shadow rounded float-left cursor-default mt-1 mr-1 px-1;
 }
 .select2-container--default .select2-search--dropdown .select2-search__field {
 	/* The border of the search textbox */
@@ -227,7 +227,7 @@
 
 .select2-container--default .select2-results > .select2-results__options {
 	/* Hight of the dropdown zone where the options or results are visible */
-	@apply h-full max-h-32 overflow-y-auto;
+	@apply h-full max-h-64 overflow-y-auto;
 }
 
 .select2-container--default .select2-results__option[role=group] {
@@ -241,7 +241,7 @@
 
 .select2-container--default .select2-results__option[aria-selected=true] {
 	/* The already selected option row color */
-	@apply bg-gray-300 dark:text-[#929292];
+	@apply bg-gray-300;
 }
 .select2-results__option--selected {
 	@apply hidden;
@@ -275,7 +275,7 @@
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
 	/* Background color and text color of the options rows when select is open */
-	@apply bg-gray-100 dark:bg-gray-500 text-[#929292] dark:text-gray-200;
+	@apply bg-gray-100 text-black;
 }
 
 .select2-container--default .select2-results__group {
