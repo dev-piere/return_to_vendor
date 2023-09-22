@@ -52,17 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<span class="block text-sm font-medium pb-1">
 					Pilih item
 				</span>
-				<select
-					class="selectpicker p-3" style="width: 100%" 
-					data-placeholder="Select a city..."
-					data-allow-clear="false"
-					title="Select city...">
-					<option partNumber="0001">Amsterdam 0002</option>
-					<option partNumber="0002">Rotterdam</option>
-					<option partNumber="0003">Den Haag</option>
-				</select>
 				<select class="js-example-data-ajax form-control" style="width: 100%" >
-					<option value="3620194" selected="selected">select2/select2</option>
 				</select>
 			</label>
 

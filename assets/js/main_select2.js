@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 $(".js-example-data-ajax").select2({
     ajax: {
-      url: "https://api.github.com/search/repositories",
+      url: "http://localhost/apiSefong/v2/local/ReturnToVendor/getItemMaster?secretKey=9u8231dsk29u9",
       dataType: 'json',
       delay: 250,
       data: function (params) {
@@ -54,49 +54,36 @@ $(".js-example-data-ajax").select2({
         params.page = params.page || 1;
   
         return {
-          results: data.items,
+          results: data.data.record,
           pagination: {
-            more: (params.page * 30) < data.total_count
+            more: (params.page * 5) < data.data.total_count
           }
         };
       },
       cache: true
     },
-    placeholder: 'Search for a repository',
-    minimumInputLength: 1,
+    // placeholder: 'Ketik nama item disini',
+    minimumInputLength: 0,
     templateResult: formatRepo,
     templateSelection: formatRepoSelection
   });
   
   function formatRepo (repo) {
+
     if (repo.loading) {
-      return repo.text;
+        return "Sedang mencari....";
     }
-  
+
     var $container = $(
-      "<div class='select2-result-repository clearfix'>" +
-        "<div class='select2-result-repository__avatar'><img src='" + repo.owner.avatar_url + "' /></div>" +
-        "<div class='select2-result-repository__meta'>" +
-          "<div class='select2-result-repository__title'></div>" +
-          "<div class='select2-result-repository__description'></div>" +
-          "<div class='select2-result-repository__statistics'>" +
-            "<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> </div>" +
-            "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> </div>" +
-            "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> </div>" +
-          "</div>" +
-        "</div>" +
-      "</div>"
+        '<div>' +
+            '<span class="flow-root font-bold">' + repo.ItemID + ' </span>' +
+            '<span class="flow-root text-sm"> Part Number : ' + repo.PartNo  + ' </span>' +
+        '</div>'
     );
-  
-    $container.find(".select2-result-repository__title").text(repo.full_name);
-    $container.find(".select2-result-repository__description").text(repo.description);
-    $container.find(".select2-result-repository__forks").append(repo.forks_count + " Forks");
-    $container.find(".select2-result-repository__stargazers").append(repo.stargazers_count + " Stars");
-    $container.find(".select2-result-repository__watchers").append(repo.watchers_count + " Watchers");
   
     return $container;
   }
-  
+
   function formatRepoSelection (repo) {
-    return repo.full_name || repo.text;
+    return repo.ItemID || repo.text;
   }
