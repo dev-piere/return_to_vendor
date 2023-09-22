@@ -88,5 +88,6 @@ $(".js-example-data-ajax").select2({
   }
 
   function formatRepoSelection (repo) {
+    $("#uom").text(repo.ItemUom)
     return repo.ItemID || repo.text;
   }

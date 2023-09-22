@@ -74,7 +74,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<span class="block text-sm font-medium">
 					Quantity
 				</span>
-				<input type="text" name="itemID" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
+				<div class="relative">
+					<span class="absolute top-3 right-0 text-sm me-4 font-medium text-[#929292]" id="uom">
+						
+					</span>
+					<input type="number" name="itemID" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
+				</div>
 			</label>
 			
 		</div>

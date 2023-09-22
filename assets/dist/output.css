@@ -570,12 +570,28 @@ video {
   }
 }
 
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
 .sticky {
   position: sticky;
 }
 
+.right-0 {
+  right: 0px;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.top-3 {
+  top: 0.75rem;
 }
 
 .z-10 {
@@ -588,6 +604,11 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.me-4 {
+  -webkit-margin-end: 1rem;
+          margin-inline-end: 1rem;
 }
 
 .mt-1 {
@@ -759,11 +780,17 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 2px;
+  filter: invert(70%) sepia(5%) saturate(16%) hue-rotate(338deg) brightness(83%) contrast(83%);
+}
+
 .select2-container {
   /* The container where the selectbox is housing*/
   position: relative;
   margin: 0px;
-  margin-bottom: 0.5rem;
   box-sizing: border-box;
   display: inline-block;
   vertical-align: middle;
