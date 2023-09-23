@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -52,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<span class="block text-sm font-medium pb-1">
 					Pilih item
 				</span>
-				<select class="js-example-data-ajax form-control" style="width: 100%" >
+				<select class="selectpicker" name="reqItem" style="width: 100%" >
 				</select>
 			</label>
 
@@ -60,17 +61,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<span class="block text-sm font-medium">
 					Nomor dokumen referensi (RTV)
 				</span>
-				<input type="text" name="itemID" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
+				<input type="text" name="docNumber" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
 			</label>
 
 			<label class="block pb-3">
 				<span class="block text-sm font-medium">
 					Tanggal return
 				</span>
-				<input type="date" name="itemID" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
+				<input type="date" name="reqDate" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
 			</label>
 
-			<label class="block">
+			<label class="block pb-3">
 				<span class="block text-sm font-medium">
 					Quantity
 				</span>
@@ -78,14 +79,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<span class="absolute top-3 right-0 text-sm me-4 font-medium text-[#929292]" id="uom">
 						
 					</span>
-					<input type="number" name="itemID" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
+					<input type="number" name="reqQty" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
+				</div>
+			</label>
+
+			<label class="block">
+				<span class="block text-sm font-medium">
+					Remarks (Tujuan request)
+				</span>
+				<div class="relative">
+					<span class="absolute top-3 right-0 text-sm me-4 font-medium text-[#929292]" id="uom">
+						
+					</span>
+					<textarea name="remarks" class="mt-1 p-3 text-[#929292] bg-[#EFEFEF] border border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" rows="4">
+					</textarea>
 				</div>
 			</label>
 			
 		</div>
 
 		<div class="m-2 mt-4">
-			<button class="bg-[#F97B22] border rounded-lg font-bold text-[#FEE8B0] w-full h-14 text-sm">
+			<button class="bg-[#F97B22] border rounded-lg font-bold text-[#FEE8B0] w-full h-14 text-sm" id="CTA">
 				Ajukan Request
 			</button>
 		</div>
@@ -93,5 +107,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 
 <script src="<?= base_url()?>/assets/js/main_select2.js"></script>
+<script src="<?= base_url()?>/assets/js/main_ajax_post_request.js"></script>
 </body>
 </html>
