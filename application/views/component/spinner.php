@@ -1,0 +1,1 @@
+<i class='fa fa-spinner sm:fa-spin animate-spin'></i>

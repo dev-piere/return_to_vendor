@@ -4,24 +4,33 @@ function createRequest() {
     var reqDate = document.getElementsByName("reqDate")[0].value;
     var qty = document.getElementsByName("reqQty")[0].value;
     var remarks = document.getElementsByName("remarks")[0].value;
+    var stockQty = verifiedStock
+    var oriLoc = verifiedLocation
     
-    // stockQty
-    // qtyPerPack
-    // oriLoc
+    if (qty > stockQty) {
+        alert("Stock tidak cukup dengan jumlah request")
+        return
+    }
+
     // trnLoc
     // reqUser
     // fileName
 
     $.ajax({
-        url: 'http://localhost/apiSefong/v2/local/ReturnToVendor/createRequest',
+        url: 'http://192.168.20.251/apiSefong/v2/local/ReturnToVendor/createRequest',
         dataType: 'json',
         data: {
             secretKey: '9u8231dsk29u9',
             docNumber: docNumber,
             docDate: reqDate,
+            stockQty: stockQty,
+            oriLoc: oriLoc,
+            trnLoc: "QC",
+            qtyPerPack: qtyStdPerPack,
             itemID: reqItem,
             qty: qty,
-            remarks: remarks
+            remarks: remarks,
+            fileName: "-"
         },
         method: 'POST'
     })
@@ -44,8 +53,6 @@ function createRequest() {
     })
 }
 
-$(document).ready(function () {
-    $("#CTA").on("click", function() {
-        createRequest();
-    })    
-})
+$("#CTA").on("click", function() {
+    createRequest();
+})    

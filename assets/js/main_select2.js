@@ -58,11 +58,17 @@ function formatData (Data) {
 
 function formatDataSelection (Data) {
   $("#uom").text(Data.ItemUom)
+  qtyStdPerPack = Data.QtyStdPerPack
+
+  $("#stockVerified").addClass("hidden")
+  verifiedLocation = ""
+  verifiedStock = ""
   return Data.ItemID || Data.text;
 }
 
 $(document).on('select2:open', function (e) {
     $('#expand').text("expand_less")
+    document.querySelector(".select2-search__field").focus()
 });
 
 $(document).on('select2:close', function (e) {
@@ -73,3 +79,92 @@ $(document).on('select2:close', function (e) {
 $(document).ready(function() {
     select2_ini(".selectpicker")
 });
+
+
+
+function getStockLocation() {
+    var itemID = document.getElementsByName("reqItem")[0].value;
+
+    var visible = false;
+
+    $("#stockLocation").html(
+        `<label class="flex justify-center pt-3 items-center">
+            <span class="text-[#575757]"> Sedang mengambil data.... </span> 
+        </label>`
+    )
+
+    $.ajax({
+        url: "http://192.168.20.251/apiSefong/v2/local/ReturnToVendor/getStock",
+        dataType: 'json',
+        data: {
+            secretKey: '9u8231dsk29u9',
+            itemID: itemID,
+        },
+    })
+    .done(function(data) {
+        var statusCode = data.status;
+        var message = data.message;
+        var data = data.data;
+
+        if (statusCode == 400) {
+            $("#stockVerified").addClass("hidden")
+
+            verifiedLocation = ""
+            verifiedStock = ""
+
+            console.log(verifiedLocation)
+            console.log(verifiedStock)
+
+            $("#stockLocation").html(
+                '<label class="flex justify-center pt-3 items-center">'+
+                    '<span class="text-[#575757]">' + message + '</span> '+
+                '</label>'
+            )
+        }
+
+        if (statusCode == 401) {
+            alert(message + ' ' + statusCode)
+        }
+
+        if (statusCode == 500) {
+            alert(message + ' ' + statusCode)
+        }
+
+        if (statusCode == 200) {
+            if (state == 0) {
+                state = 1;
+            } else {
+                state = 0;
+            }
+                $("#modalStockLocation").toggleClass("hidden")
+                $("#stockVerified").removeClass("hidden")
+
+                verifiedLocation = data[0].TrnLoc
+                verifiedStock = data[0].Stock
+                
+                console.log(verifiedLocation)
+                console.log(verifiedStock)
+
+                $("#verifyText").text(data[0].TrnLoc)
+                $("#verifyStock").text(data[0].Stock)
+                $("#verifyQtyPerPack").text(qtyStdPerPack + " Per Pack")
+        }
+    })
+}
+
+var state = 0;
+
+function openModal() {
+    if (state == 0) {
+        $("#modalStockLocation").toggleClass("hidden")
+        getStockLocation()
+        state = 1;
+    } else {
+        $("#modalStockLocation").toggleClass("hidden")
+        state = 0;
+    }
+}
+
+$("#checkStock, #backdrop").on("click", function(){
+    openModal();
+})

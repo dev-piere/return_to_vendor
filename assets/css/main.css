@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
 	cursor: pointer;
 	border-radius: 4px;
@@ -42,7 +54,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 		@apply float-left;
 	}
 		.select2-container .select2-search--inline .select2-search__field {
-			@apply box-border border dark:border-gray-600 pl-1 my-1 w-full text-base;
+			@apply box-border border pl-1 my-1 w-full text-base;
 		}
 			.select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button {
 				@apply appearance-none;
@@ -50,11 +62,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .select2-dropdown {
 	/* Dropdown area after the arrow down is clicked */
- 	@apply absolute block w-auto box-border bg-white dark:bg-slate-700 border border-slate-300 z-50 float-left;
+ 	@apply absolute block w-auto box-border bg-white border border-slate-300 z-50 float-left;
 }
 
 .select2-results {
-	@apply block text-black dark:text-gray-300;
+	@apply block text-black;
 }
 
 .select2-results__options {
@@ -77,12 +89,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .select2-container--open .select2-dropdown--above {
 	/* The left and right borders of the option rows */
-	@apply rounded-lg border-slate-300 dark:border-gray-700 shadow;
+	@apply rounded-lg border-slate-300 shadow;
 }
 
 .select2-container--open .select2-dropdown--below {
 	/* The left and right borders of the option rows */
-	@apply rounded-lg border-slate-300 dark:border-gray-700 shadow;
+	@apply rounded-lg border-slate-300 shadow;
 }
 
 .select2-search--dropdown {
@@ -91,7 +103,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 	.select2-search--dropdown .select2-search__field {
 		/* Search box itself where you can enter text*/
-		@apply h-10 p-1 bg-[#EFEFEF] dark:bg-slate-500 box-border rounded-lg border border-slate-300 dark:text-gray-200 outline-none ps-3 pe-3;
+		@apply h-10 p-1 bg-[#EFEFEF] box-border rounded-lg border border-slate-300 outline-none ps-3 pe-3;
 		width: 100%;
 	}
     .select2-search--dropdown .select2-search__field::-webkit-search-cancel-button {
@@ -141,7 +153,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 	.select2-container--default .select2-selection--single .select2-selection__rendered {
 	  	/* Selection bar - Text color of the item you selected from the results */
-	    @apply text-[#929292];
+	    @apply text-[#575757];
 	}
 	
 	.select2-container--default .select2-selection--single .select2-selection__clear {
@@ -158,7 +170,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	}
 	    .select2-container--default .select2-selection--single .select2-selection__arrow b span {
 	    	/* Arrow is a CSS triangle that does not exists in Tailwind without a package */
-			@apply absolute border-solid h-0 w-0 border-t-4 text-[#929292] border-r-4 border-b-0 border-l-4;
+			@apply absolute border-solid h-0 w-0 border-t-4 text-[#575757] border-r-4 border-b-0 border-l-4;
 			border-color: #929292 transparent transparent transparent; 
 			left: 50%;
 			margin-left: -4px;
@@ -204,13 +216,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     @apply float-right cursor-pointer mt-1 mr-2 p-1;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    @apply bg-white text-[#929292] border cursor-default rounded my-1 mr-1 px-2 float-left;
+    @apply bg-white text-[#575757] border cursor-default rounded my-1 mr-1 px-2 float-left;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-	@apply text-[#929292] cursor-pointer inline-block mr-1;
+	@apply text-[#575757] cursor-pointer inline-block mr-1;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
-    @apply text-[#929292];
+    @apply text-[#575757];
 }
 .select2-container--default.select2-container--focus .select2-selection--multiple {
     @apply border-2 outline-none;
@@ -243,7 +255,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .select2-container--default .select2-results__option[aria-disabled=true] {
-	@apply text-[#929292]; 
+	@apply text-[#575757]; 
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
@@ -288,4 +300,60 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .select2-container--default .select2-results__group {
 	/* Have no idea what this is for */
   @apply cursor-default block;
-  padding: 6px; }
+  padding: 6px;
+}
+
+
+@layer base {
+	input {
+		-webkit-appearance: none;
+		position: relative;
+		width: 100px;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	input[type="date"]::-webkit-calendar-picker-indicator {
+		position: absolute;
+		background: transparent;
+		color: transparent;
+		height: auto;
+		width: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		cursor: pointer;
+	}
+
+	input[type="time"]::-webkit-calendar-picker-indicator {
+		position: absolute;
+		background: transparent;
+		color: transparent;
+		height: auto;
+		width: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		cursor: pointer;
+	}
+
+	.tw-input-date::after {
+		@apply right-4;
+		font-family: 'Material Symbols Rounded';
+		content: "calendar_month";
+		position: absolute;
+		display: flex;
+		align-items: center;
+	}
+
+	.tw-input-time::after {
+		@apply right-4;
+		font-family: FontAwesome;
+		content: "\f017";
+		position: absolute;
+		display: flex;
+		align-items: center;
+	}
+}
