@@ -41,6 +41,6 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        redirect('http://192.168.20.251/sefong_portal/');
+        redirect('http://localhost/sefong_portal/');
     }
 }

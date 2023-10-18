@@ -2,6 +2,8 @@
     var qtyStdPerPack = ""
 	var verifiedLocation = ""
 	var verifiedStock = ""
+    
+    var state = 0;
 </script>
 
 <script>
@@ -23,7 +25,7 @@
         }
 
         $.ajax({
-            url: "http://192.168.20.251/return_to_vendor/welcome/clientCreateRequest",
+            url: "http://localhost/return_to_vendor/welcome/clientCreateRequest",
             dataType: 'json',
             data: {
                 docNumber: docNumber,
@@ -38,7 +40,7 @@
                 fileName: "-",
                 reqUser: reqUser
             },
-            method: 'POST'
+            method: 'GET'
         })
         .done(function(data) {
             var statusCode = data.status;
@@ -56,6 +58,32 @@
             if (statusCode == 500) {
                 alert(message + ' ' + statusCode)
             }
+
+            if (statusCode == 200) {
+
+                console.log(document.getElementById("docNumber"));
+
+                if (state == 0) {
+                    state = 1;
+                } else {
+                    state = 0;
+                }
+                
+                document.getElementsByName("docNumber")[0].value = "";
+                document.getElementsByName("reqItem")[0].value = "";
+                document.getElementsByName("reqDate")[0].value = "";
+                document.getElementsByName("reqQty")[0].value = "";
+                document.getElementsByName("remarks")[0].value = "";
+
+                $("#modalStockLocation").toggleClass("hidden");
+                $("#stockVerified").addClass("hidden")
+                
+                $("#stockLocation").html(
+                    `<label class="flex justify-center pt-3 items-center">
+                        <span class="text-[#575757]"> Request sudah berhasil dibuat </span> 
+                    </label>`
+                )
+            }
         })
     }
 
@@ -69,7 +97,7 @@ function select2_ini(target) {
     $(target).select2(
       {
         ajax: {
-          url: "http://192.168.20.251/return_to_vendor/welcome/getClientItemMaster",
+          url: "http://localhost/return_to_vendor/welcome/getClientItemMaster",
           dataType: 'json',
           delay: 250,
           data: function (params) {
@@ -160,7 +188,7 @@ function getStockLocation() {
     )
 
     $.ajax({
-        url: "http://192.168.20.251/return_to_vendor/welcome/getClientStock",
+        url: "http://localhost/return_to_vendor/welcome/getClientStock",
         dataType: 'json',
         data: {
             itemID: itemID,
@@ -176,9 +204,6 @@ function getStockLocation() {
 
             verifiedLocation = ""
             verifiedStock = ""
-
-            console.log(verifiedLocation)
-            console.log(verifiedStock)
 
             $("#stockLocation").html(
                 '<label class="flex justify-center pt-3 items-center">'+
@@ -217,8 +242,6 @@ function getStockLocation() {
         }
     })
 }
-
-var state = 0;
 
 function openModal() {
     if (state == 0) {

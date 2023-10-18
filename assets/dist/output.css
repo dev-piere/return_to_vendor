@@ -845,10 +845,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   justify-content: space-between;
 }
 
-.justify-evenly {
-  justify-content: space-evenly;
-}
-
 .justify-items-center {
   justify-items: center;
 }
@@ -1020,6 +1016,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold {

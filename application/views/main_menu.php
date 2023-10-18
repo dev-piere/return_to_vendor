@@ -16,7 +16,7 @@
 
                     $this->load->view('component/cardMenu', ['navigate' => base_url('welcome/transferForm'), 'image' => base_url('assets/img/hand trolley rear view.png'), 'titleCard' => 'Transfer Barang']);
 
-                    $this->load->view('component/cardMenu', ['navigate' => '#', 'image' => base_url('assets/img/hand trolley.png'), 'titleCard' => 'Terima Barang']);
+                    $this->load->view('component/cardMenu', ['navigate' => base_url('welcome/receiveForm'), 'image' => base_url('assets/img/hand trolley.png'), 'titleCard' => 'Terima Barang']);
                 ?>
             </div>
         </div>

@@ -49,7 +49,7 @@ function urlApi()
 
 function urlApi_local()
 {
-    return 'http://192.168.20.251/apiSefong/v2/local/ReturnToVendor/';
+    return 'http://localhost/apiSefong/v2/local/ReturnToVendor/';
 }
 
 

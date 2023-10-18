@@ -31,14 +31,21 @@ class Welcome extends CI_Controller {
 	{
 		isOnline();
 
-		$this->load->view('request_form');
+		$this->load->view('menus/request/request_form');
 	}
 
 	public function transferForm()
 	{
 		isOnline();
 
-		$this->load->view('transfer_form');
+		$this->load->view('menus/transfer/transfer_lists');
+	}
+
+	public function receiveForm()
+	{
+		isOnline();
+
+		$this->load->view('menus/receive/receive_lists');
 	}
 
 	public function requestDetail()
@@ -53,7 +60,22 @@ class Welcome extends CI_Controller {
 		
 		$data = getToApi_local("getRequestDetail", $params)["data"][0];
 		
-		$this->load->view('request_detail_form', $data);
+		$this->load->view('menus/transfer/request_detail_form', $data);
+	}
+
+	public function receiveDetail()
+	{
+		isOnline();
+
+		$filterDocNo = $this->input->get("DocNo");
+
+		$params = [
+			'filterDocNo' => $filterDocNo
+		];
+		
+		$data = getToApi_local("getReceivesDetail", $params)["data"][0];
+		
+		$this->load->view('menus/receive/receive_detail_form', $data);
 	}
 
 	function getClientRequests()
@@ -70,7 +92,30 @@ class Welcome extends CI_Controller {
 			$docNo = $d["DocNo"];
 			$array = [
 				'isNavigatable' => true,
-				'link' => "http://192.168.20.251/return_to_vendor/welcome/requestDetail?DocNo=$docNo",
+				'link' => "http://localhost/return_to_vendor/welcome/requestDetail?DocNo=$docNo",
+				'type' => $d["TrnTypID"],
+				'headerText' => $d["DocNo"],
+				'smallText' => $d["DocDate"]
+			];
+			$this->load->view("component/listCard", $array);
+		}
+	}
+
+	function getClientReceives()
+	{
+		$searchBy = $this->input->get("searchBy");
+
+		$params = [
+			"searchBy" => $searchBy
+		];
+		
+		$data = getToApi_local("getReceives", $params)["data"];
+
+		foreach ($data as $d) {
+			$docNo = $d["DocNo"];
+			$array = [
+				'isNavigatable' => true,
+				'link' => "http://localhost/return_to_vendor/welcome/receiveDetail?DocNo=$docNo",
 				'type' => $d["TrnTypID"],
 				'headerText' => $d["DocNo"],
 				'smallText' => $d["DocDate"]
@@ -115,6 +160,7 @@ class Welcome extends CI_Controller {
 		$reqUser = $this->input->get("reqUser");
 
 		$params = [
+			'secretKey' => "9u8231dsk29u9",
 			'docNumber' => $docNumber,
 			'docDate' => $docDate,
 			'stockQty' => $stockQty,
@@ -129,6 +175,19 @@ class Welcome extends CI_Controller {
 		];
 		
 		echo json_encode(postToApi_local("createRequest", $params));
+	}
+
+	function clientIssueItem() {
+		$issuedDocNo = $this->input->get("issuedDocNo");
+		$issuedItemID = $this->input->get("issuedItemID");
+
+		$params = [
+			'secretKey' => "9u8231dsk29u9",
+			'docNumber' => $issuedDocNo,
+			'itemID' => $issuedItemID
+		];
+
+		echo json_encode(postToApi_local("issueRequestedItem", $params));
 	}
 
 }
