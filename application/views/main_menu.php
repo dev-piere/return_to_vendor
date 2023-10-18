@@ -12,7 +12,7 @@
                 <?php
                     $this->load->view('component/cardMenu', ['navigate' => base_url('welcome/requestForm'), 'image' => base_url('assets/png/guy-working-on-a-computer.png'), 'titleCard' => 'Buat Request']);
 
-                    $this->load->view('component/cardMenu', ['navigate' => '#', 'image' => base_url('assets/img/history folder.png'), 'titleCard' => 'History Request']);
+                    $this->load->view('component/cardMenu', ['navigate' => base_url('welcome/requestHistory'), 'image' => base_url('assets/img/history folder.png'), 'titleCard' => 'History Request']);
 
                     $this->load->view('component/cardMenu', ['navigate' => base_url('welcome/transferForm'), 'image' => base_url('assets/img/hand trolley rear view.png'), 'titleCard' => 'Transfer Barang']);
 

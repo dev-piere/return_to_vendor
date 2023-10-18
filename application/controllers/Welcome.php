@@ -48,6 +48,13 @@ class Welcome extends CI_Controller {
 		$this->load->view('menus/receive/receive_lists');
 	}
 
+	public function requestHistory()
+	{
+		isOnline();
+
+		$this->load->view('menus/history/view_lists');
+	}
+
 	public function requestDetail()
 	{
 		isOnline();
