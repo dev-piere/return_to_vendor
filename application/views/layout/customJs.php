@@ -4,6 +4,8 @@
 	var verifiedStock = ""
     
     var state = 0;
+
+    var base_link = "http://192.168.20.251/return_to_vendor";
 </script>
 
 <script>
@@ -25,7 +27,7 @@
         }
 
         $.ajax({
-            url: "http://localhost/return_to_vendor/welcome/clientCreateRequest",
+            url: base_link+"/welcome/clientCreateRequest",
             dataType: 'json',
             data: {
                 docNumber: docNumber,
@@ -97,7 +99,7 @@ function select2_ini(target) {
     $(target).select2(
       {
         ajax: {
-          url: "http://localhost/return_to_vendor/welcome/getClientItemMaster",
+          url: base_link+"/welcome/getClientItemMaster",
           dataType: 'json',
           delay: 250,
           data: function (params) {
@@ -188,7 +190,7 @@ function getStockLocation() {
     )
 
     $.ajax({
-        url: "http://localhost/return_to_vendor/welcome/getClientStock",
+        url: base_link+"/welcome/getClientStock",
         dataType: 'json',
         data: {
             itemID: itemID,

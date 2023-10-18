@@ -77,17 +77,17 @@
                 </span>
             </label>
         </div>
-
-		<label class="block">
-			<span class="block text-sm font-normal">
-				Remarks (Tujuan request)
-			</span>
-			<span class="block text-sm font-bold pb-1 mt-1">
-				<?= $Remarks ?>
-			</span>
-		</label>
 		
 	</div>
+
+    <div class="p-4 rounded-lg bg-white m-2 mt-4 border border-[#D3D3D3]">
+        <label class="block">
+            <span class="block text-sm font-normal">
+                Masukkan nomor dokumen dari customer
+            </span>
+            <input type="text" id="referenceDocumentNumber" class="mt-1 p-3 text-[#575757] bg-[#EFEFEF] border border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
+        </label>
+    </div>
 
     <div class="m-2 mt-4">
         <button class="bg-[#F97B22] border rounded-lg font-bold text-[#FEE8B0] w-full h-14 text-sm" id="CTA">
@@ -103,16 +103,26 @@
         window.location.replace(link);
     }
 
-    function issueItemRequest() {
+    function receiveItemRequest() {
         var issuedDocNo = "<?php echo $DocNo; ?>";
         var issuedItemID = "<?php echo $TrnItemID; ?>";
+        var issuedSysID = "<?php echo $SysID; ?>";
+        var issuedReferencedDocNumber = document.getElementById("referenceDocumentNumber").value;
 
-        console.log(issuedDocNo)
+        var baseLink = "http://192.168.20.251/return_to_vendor";
+
+        if (!issuedReferencedDocNumber) {
+            alert("Pastikan nomor dokumen dari customer sudah di-isi")
+            return
+        }
+
         $.ajax({
-            url : "http://localhost/return_to_vendor/welcome/clientReceiveItem",
+            url : baseLink + "/welcome/clientReceiveItem",
             data : {
                 issuedDocNo : issuedDocNo,
-                issuedItemID : issuedItemID 
+                issuedReferencedDocNumber : issuedReferencedDocNumber,
+                issuedSysID : issuedSysID,
+                issuedItemID : issuedItemID
             }
         })
         .done(function (data){
@@ -125,7 +135,7 @@
     $("#CTA").on("click", function (e) {
         if(saveTimeout) clearTimeout(saveTimeout);
         saveTimeout = setTimeout(function() {
-            issueItemRequest();
+            receiveItemRequest();
         }, 500);
     })
 </script>

@@ -24,8 +24,10 @@
 <script>
     function loadRequests(filter) {
         var isFirst = 0;
+        var baseLink = "http://192.168.20.251/return_to_vendor";
+
         $.ajax({
-            url: "http://localhost/return_to_vendor/welcome/getClientReceives",
+            url: baseLink + "/welcome/getClientReceives",
             data: {
                 searchBy : filter
             }

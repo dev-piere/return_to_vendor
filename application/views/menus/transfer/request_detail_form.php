@@ -94,7 +94,7 @@
 			<span class="block text-sm font-normal">
 				Masukkan nomor Gate Pass
 			</span>
-			<input type="text" name="gatePass" class="mt-1 p-3 text-[#575757] bg-[#EFEFEF] border border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
+			<input type="text" id="gatePass" class="mt-1 p-3 text-[#575757] bg-[#EFEFEF] border border-slate-300 placeholder-slate-400 focus:outline-none block w-full rounded-md sm:text-sm" />
 		</label>
     </div>
 
@@ -115,13 +115,21 @@
     function issueItemRequest() {
         var issuedDocNo = "<?php echo $DocNo; ?>";
         var issuedItemID = "<?php echo $TrnItemID; ?>";
+        var issuedReferencedDocNumber = document.getElementById("gatePass").value;
 
-        console.log(issuedDocNo)
+        var baseLink = "http://192.168.20.251/return_to_vendor";
+        
+        if (!issuedReferencedDocNumber) {
+            alert("Pastikan nomor gatepass sudah di-isi")
+            return
+        }
+
         $.ajax({
-            url : "http://localhost/return_to_vendor/welcome/clientIssueItem",
+            url : baseLink + "/welcome/clientIssueItem",
             data : {
                 issuedDocNo : issuedDocNo,
-                issuedItemID : issuedItemID 
+                issuedItemID : issuedItemID,
+                issuedReferencedDocNumber : issuedReferencedDocNumber
             }
         })
         .done(function (data){

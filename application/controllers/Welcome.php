@@ -78,6 +78,10 @@ class Welcome extends CI_Controller {
 		$this->load->view('menus/receive/receive_detail_form', $data);
 	}
 
+	private function _baseLink() {
+		return "http://192.168.20.251/return_to_vendor";
+	}
+
 	function getClientRequests()
 	{
 		$searchBy = $this->input->get("searchBy");
@@ -92,7 +96,7 @@ class Welcome extends CI_Controller {
 			$docNo = $d["DocNo"];
 			$array = [
 				'isNavigatable' => true,
-				'link' => "http://localhost/return_to_vendor/welcome/requestDetail?DocNo=$docNo",
+				'link' => $this->_baseLink() ."/welcome/requestDetail?DocNo=$docNo",
 				'type' => $d["TrnTypID"],
 				'headerText' => $d["DocNo"],
 				'smallText' => $d["DocDate"]
@@ -115,7 +119,7 @@ class Welcome extends CI_Controller {
 			$docNo = $d["DocNo"];
 			$array = [
 				'isNavigatable' => true,
-				'link' => "http://localhost/return_to_vendor/welcome/receiveDetail?DocNo=$docNo",
+				'link' => $this->_baseLink() ."/welcome/receiveDetail?DocNo=$docNo",
 				'type' => $d["TrnTypID"],
 				'headerText' => $d["DocNo"],
 				'smallText' => $d["DocDate"]
@@ -180,14 +184,32 @@ class Welcome extends CI_Controller {
 	function clientIssueItem() {
 		$issuedDocNo = $this->input->get("issuedDocNo");
 		$issuedItemID = $this->input->get("issuedItemID");
+		$issuedReferencedDocNumber = $this->input->get("issuedReferencedDocNumber");
 
 		$params = [
 			'secretKey' => "9u8231dsk29u9",
 			'docNumber' => $issuedDocNo,
-			'itemID' => $issuedItemID
+			'itemID' => $issuedItemID,
+			'referencedDocNumber' => $issuedReferencedDocNumber,
 		];
 
 		echo json_encode(postToApi_local("issueRequestedItem", $params));
 	}
 
+	function clientReceiveItem() {
+		$issuedDocNo = $this->input->get("issuedDocNo");
+		$issuedItemID = $this->input->get("issuedItemID");
+		$issuedSysID = $this->input->get("issuedSysID");
+		$issuedReferencedDocNumber = $this->input->get("issuedReferencedDocNumber");
+
+		$params = [
+			'secretKey' => "9u8231dsk29u9",
+			'docNumber' => $issuedDocNo,
+			'itemID' => $issuedItemID,
+			'sysID'=> $issuedSysID,
+			'referencedDocNumber' => $issuedReferencedDocNumber,
+		];
+
+		echo json_encode(postToApi_local("receiveRequestedItem", $params));
+	}
 }
