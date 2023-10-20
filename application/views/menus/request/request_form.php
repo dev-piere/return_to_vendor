@@ -1,5 +1,10 @@
-<?php $this->load->view("layout/head.php") ?>
-<?php $this->load->view("layout/nav.php") ?>
+<?php 
+    $array = [
+        "title"=> "Buat Request",
+    ];
+    $this->load->view("layout/head.php",$array); 
+    $this->load->view("layout/nav.php",$array) 
+?>
 		
 <?php
 	include('application/views/component/modal.php');

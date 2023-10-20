@@ -1,5 +1,10 @@
-<?php $this->load->view("layout/head.php") ?>
-<?php $this->load->view("layout/nav.php") ?>
+<?php 
+    $array = [
+        "title"=> "Terima Barang",
+    ];
+    $this->load->view("layout/head.php",$array);
+    $this->load->view("layout/nav.php",$array) 
+?>
 
 <div class="container">
 

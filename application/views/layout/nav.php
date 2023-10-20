@@ -6,7 +6,7 @@
             </span>
         </li>
         <li class='font-bold text-lg'>
-            Return to Vendor
+            <?=$title?>
         </li>
         <li class='cursor-pointer flex'>
             <a style="line-height: 0" href="<?= base_url('auth/logout'); ?>">

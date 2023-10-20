@@ -89,6 +89,43 @@ class Welcome extends CI_Controller {
 		return "http://192.168.20.251/return_to_vendor";
 	}
 
+	function getRequestHistory()
+	{
+		$searchBy = $this->input->get("searchBy");
+
+		$params = [
+			"searchBy" => $searchBy
+		];
+		
+		$data = getToApi_local("getRequestHistory", $params)["data"];
+
+		foreach ($data as $d) {
+			$docNo = $d["DocNo"];
+			$array = [
+				'isNavigatable' => true,
+				'link' => $this->_baseLink() ."/welcome/historyDetail?DocNo=$docNo",
+				'type' => $d["TrnTypID"],
+				'headerText' => $d["DocNo"],
+				'smallText' => $d["DocDate"]
+			];
+			$this->load->view("component/listCard", $array);
+		}
+	}
+
+	function historyDetail() {
+		isOnline();
+
+		$filterDocNo = $this->input->get("DocNo");
+
+		$params = [
+			'filterDocNo' => $filterDocNo
+		];
+		
+		$data["data"] = getToApi_local("getRequestHistoryDetail", $params)["data"];
+
+		$this->load->view('menus/history/view_list_detail', $data);
+	}
+
 	function getClientRequests()
 	{
 		$searchBy = $this->input->get("searchBy");

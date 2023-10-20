@@ -1,4 +1,9 @@
-<?php $this->load->view("layout/head.php") ?>
+<?php 
+    $array = [
+        "title"=> "Return To Vendor",
+    ];
+    $this->load->view("layout/head.php",$array) 
+?>
 <?php $this->load->view("layout/nav.php") ?>
 		
 <?php

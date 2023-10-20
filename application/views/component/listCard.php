@@ -13,7 +13,13 @@
             <span class="grow font-bold text-lg"> <?= $headerText ?> </span>
             <small class="text-[#7C9070]"> <?= $smallText ?></small>
         </div>
-        <span class="material-symbols-rounded"> chevron_right </span>
+        <?php
+            if ($isNavigatable) {
+        ?>
+            <span class="material-symbols-rounded"> chevron_right </span>
+        <?php
+            }
+        ?>
     </div>
 </div>
 

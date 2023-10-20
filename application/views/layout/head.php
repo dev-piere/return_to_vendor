@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
-	<title>Return to Vendor</title>
+	<title><?=$title?></title>
 	<link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/hand trolley rear view.png">
 
 	<link href="<?= base_url() ?>assets/dist/output.css" rel="stylesheet">
